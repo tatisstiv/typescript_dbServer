@@ -1,6 +1,7 @@
 import {connect} from 'mongoose';
 import { AutorRepositorio } from './persistencia/autorRepositorio';
 import { LivroRepositorio } from './persistencia/livroRepositorio';
+import { emprestarLivro } from './negocios/negocios';
 
 async function main() {
     const url = 'mongodb://localhost:27017/biblioteca';
@@ -34,9 +35,23 @@ async function main() {
             autores: [{primeiro_nome: 'Eu', ultimo_nome:'Eu'}]
         });*/
 
-        console.log('Buscando livros...');
+        /*console.log('Buscando livros...');
         let livros = await LivroRepositorio.buscar();
-        livros.forEach(l => console.log(`Autores: ${l.autores.map(a => a.primeiro_nome)}`));
+        livros.forEach(l => console.log(`Autores: ${l.autores.map(a => a.primeiro_nome)}`));*/
+
+        /*let autores = await AutorRepositorio.buscarPorSobrenome('Doe');
+        autores.forEach(autor => console.log(autor));*/
+
+        /*let autores = await AutorRepositorio.buscarPorNome('Mary');
+        autores.forEach(autor => console.log(autor));*/
+
+        /*let autor = await AutorRepositorio.alterar('5d03dd864537335b4af4a626', 'ultimo_nome', 'Davis');
+        console.log(autor);*/
+
+        /*let emprestimo = await emprestarLivro('5d03dd864537335b4af4a627');
+        console.log(emprestimo);*/
+
+        //console.log(await LivroRepositorio.buscarPorAutor('5d03dd864537335b4af4a625'));
 
         if (cliente && cliente.connection) {
             cliente.connection.close();
