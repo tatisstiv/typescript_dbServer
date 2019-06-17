@@ -19,3 +19,13 @@ export function lerCofrinho(nomeArquivo: string): Promise<Cofrinho>{
     });
 }
 
+export async function salvarCofrinhoAsync(cofre: Cofrinho, nomeArquivo: string): Promise<void>{
+    const cofre_json = JSON.stringify(cofre);
+    let resultado = await promises.writeFile(nomeArquivo, cofre_json);
+    return resultado;
+}
+
+export async function lerCofrinhoAsync(nomeArquivo: string): Promise<Cofrinho>{
+    let resultado = await promises.readFile(nomeArquivo, 'utf-8');
+    return JSON.parse(resultado);
+}
