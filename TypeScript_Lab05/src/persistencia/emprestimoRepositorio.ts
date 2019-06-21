@@ -1,5 +1,6 @@
 import { Emprestimo } from "../entidades/emprestimo"
 import { EmprestimoModel } from "./emprestimoModel"
+import { LivroModel } from "./livroModel";
 
 export class EmprestimoRepositorio{
     static async criar(emprestimo: Emprestimo): Promise<Emprestimo> {
@@ -20,5 +21,9 @@ export class EmprestimoRepositorio{
         else {
             throw new Error('Emprestimo não encontrado');
         }
+    }
+
+    static async buscarPorLivro(id: string): Promise<Emprestimo|null>{
+        return EmprestimoModel.findOne({ livro: id});
     }
 }

@@ -10,7 +10,7 @@ export class LivroRepositorio{
     }
 
     static async buscar(): Promise<Livro[]>{
-        return LivroModel.find().populate('autores', AutorModel).exec();
+        return LivroModel.find().exec();
     }
 
     static async buscarPorAutor(id: string): Promise<Livro[]>{
@@ -19,5 +19,16 @@ export class LivroRepositorio{
 
     static async buscarPorId(id: string): Promise<Livro|null>{
         return LivroModel.findById(id).exec();
+    }
+
+    static async alterar(id: string, parametro: string, valor: string|boolean): Promise<Livro> {
+        const livro = await LivroModel.findById(id).exec();
+        if(livro !== null){
+            livro.set(parametro, valor);
+            return livro.save();
+        }
+        else {
+            throw new Error('Livro não encontrado');
+        }
     }
 }
