@@ -17,7 +17,8 @@ export async function getLivro(req: Request, res: Response, next: NextFunction) 
         if(livro === null){
             res.status(404).end();
         } else {
-            res.json(livro);
+            const {titulo,autores} = livro;
+            res.json({titulo,autores});
         }
     } catch (error) {
         next(error);
