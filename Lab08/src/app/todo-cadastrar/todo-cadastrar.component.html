@@ -1,0 +1,7 @@
+<h1>Cadastrar Tarefa</h1>
+
+<form (ngSubmit)="onSubmit()">
+  <input type="text" id="userid" name="userid" [(ngModel)]="tarefa.userId"><!--usar dropdown-->
+  <input type="text" id="title" name="title" [(ngModel)]="tarefa.title">
+  <button type="submit">Cadastrar</button>
+</form>
